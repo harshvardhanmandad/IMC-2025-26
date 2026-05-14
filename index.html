@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>International Math Challenge 2025–26 — Official Results</title>
+  <meta name="description" content="Official finalist rankings from the International Math Challenge 2025–26. Search by name, browse by grade.">
+
+  <!-- Font: only the 3 weights we actually use -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&display=swap">
+
+  <link rel="stylesheet" href="mai-tokens.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--mai-cream);
+      color: var(--mai-fg-1);
+      font-family: var(--mai-font);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    button { font-family: inherit; }
+
+    main {
+      position: relative; z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    @media (max-width: 600px) { main { padding: 0 16px; } }
+
+    /* Sticky topbar */
+    .topbar {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250, 241, 240, 0.85);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      backdrop-filter: blur(12px) saturate(160%);
+      border-bottom: 1px solid var(--mai-border-soft);
+    }
+    .topbar-inner {
+      max-width: 960px; margin: 0 auto;
+      padding: 12px 20px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    @media (max-width: 600px) { .topbar-inner { padding: 10px 16px; } }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; flex-shrink: 0; }
+    .brand-mark { position: relative; width: 28px; height: 28px; }
+    .brand-mark .core {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--mai-coral);
+      animation: mai-breathe 3s ease-in-out infinite;
+    }
+    .brand-mark .companion {
+      position: absolute; bottom: 0; right: 0;
+      width: 8px; height: 8px;
+      background: var(--mai-yellow); border-radius: 2px;
+      animation: mai-breathe 3s ease-in-out infinite 0.3s;
+    }
+    .brand-text { font-size: 18px; font-weight: 800; letter-spacing: -0.04em; }
+    .brand-text .ai { color: var(--mai-coral); }
+    .nav-links { display: flex; gap: 22px; margin-left: auto; align-items: center; }
+    .nav-links a {
+      text-decoration: none; font-size: 13px; font-weight: 700;
+      color: var(--mai-fg-2); transition: color 0.15s ease;
+    }
+    .nav-links a:hover { color: var(--mai-fg-1); }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    section { padding: 64px 0 32px; scroll-margin-top: 72px; }
+    @media (max-width: 600px) { section { padding: 48px 0 24px; } }
+
+    .eyebrow {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--mai-coral); margin: 0 0 14px;
+    }
+
+    /* Hero — yellow gradient card */
+    .hero { padding-top: 32px; padding-bottom: 24px; }
+    .hero-inner {
+      background: var(--mai-grad-yellow-2);
+      border-radius: var(--mai-radius-2xl);
+      padding: 56px 44px;
+      box-shadow: var(--mai-shadow-yellow-2);
+    }
+    .hero .eyebrow { color: var(--mai-purple); }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800; letter-spacing: -0.045em;
+      line-height: 1.05; margin: 0 0 18px;
+      max-width: 22ch; text-wrap: balance;
+    }
+    .hero h1 .accent { color: var(--mai-coral); }
+    .hero .sub {
+      font-size: clamp(16px, 2.2vw, 19px);
+      font-weight: 400; line-height: 1.5;
+      color: rgba(39, 15, 54, 0.75);
+      margin: 0 0 28px; max-width: 54ch;
+    }
+    .hero .date {
+      font-size: 14px; font-weight: 700;
+      color: rgba(39, 15, 54, 0.6); margin: 0 0 8px;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 22px;
+      border: 0; border-radius: var(--mai-radius-sm);
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      color: var(--mai-purple);
+      transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--mai-purple); color: var(--mai-yellow);
+      box-shadow: 0 4px 12px rgba(39,15,54,0.2);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 18px rgba(39,15,54,0.28); }
+    @media (max-width: 600px) { .hero-inner { padding: 36px 24px; } }
+
+    /* Foreword */
+    .foreword {
+      background: var(--mai-white);
+      border: 1px solid var(--mai-border-soft);
+      border-radius: var(--mai-radius-2xl);
+      padding: 40px 36px;
+      box-shadow: var(--mai-shadow-card);
+    }
+    .foreword h2 {
+      font-size: 26px; font-weight: 800; letter-spacing: -0.03em;
+      margin: 0 0 18px;
+    }
+    .foreword p {
+      font-size: 17px; line-height: 1.6; margin: 0 0 14px; max-width: 60ch;
+    }
+    .foreword p.signature { margin-top: 24px; font-size: 15px; color: var(--mai-fg-2); }
+    .foreword p.signature strong { color: var(--mai-fg-1); }
+    @media (max-width: 600px) {
+      .foreword { padding: 28px 22px; }
+      .foreword h2 { font-size: 22px; }
+      .foreword p { font-size: 16px; }
+    }
+
+    .section-head { margin-bottom: 28px; }
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.1; margin: 0 0 8px;
+    }
+    .section-head p {
+      font-size: 16px; color: var(--mai-fg-2);
+      margin: 0; max-width: 60ch;
+    }
+
+    /* Toppers overview */
+    .toppers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .toppers-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .toppers-grid { grid-template-columns: 1fr; } }
+    .topper-tile {
+      position: relative; border: 0;
+      border-radius: var(--mai-radius-xl);
+      padding: 22px 20px 64px;
+      box-shadow: var(--mai-shadow-md);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      cursor: pointer; text-align: left;
+      display: flex; flex-direction: column; gap: 8px;
+      min-height: 200px; overflow: hidden;
+      color: var(--mai-purple);
+    }
+    .topper-tile::before {
+      content: ''; position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px; border-radius: 50%;
+      background: rgba(255,255,255,0.35); pointer-events: none;
+    }
+    .topper-tile:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(39,15,54,0.12); }
+    .topper-tile:active { transform: translateY(-1px) scale(0.99); }
+    .topper-tile.tt-0 { background: linear-gradient(145deg, #FFDE49 0%, #FFC107 100%); }
+    .topper-tile.tt-1 { background: linear-gradient(145deg, #FFE8C2 0%, #F96B4C 100%); }
+    .topper-tile.tt-2 { background: linear-gradient(145deg, #FCF6D7 0%, #FFDE49 100%); }
+    .topper-tile.tt-3 { background: linear-gradient(145deg, #F8D4CC 0%, #F96B4C 100%); }
+    .topper-tile.tt-1, .topper-tile.tt-3 { box-shadow: 0 4px 16px rgba(249, 107, 76, 0.30); }
+    .topper-tile.tt-1:hover, .topper-tile.tt-3:hover { box-shadow: 0 12px 28px rgba(249, 107, 76, 0.35); }
+    .tt-watermark {
+      position: absolute; bottom: -28px; right: -8px;
+      font-size: 140px; font-weight: 900; letter-spacing: -0.08em;
+      color: rgba(39, 15, 54, 0.10); line-height: 1; pointer-events: none; z-index: 0;
+    }
+    .tt-grade-chip {
+      position: relative; align-self: flex-start;
+      background: rgba(39, 15, 54, 0.85); color: #FFDE49;
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 6px 10px; border-radius: var(--mai-radius-full); z-index: 1;
+    }
+    .tt-name {
+      position: relative; font-size: 20px; font-weight: 800;
+      letter-spacing: -0.025em; line-height: 1.15;
+      z-index: 1; text-wrap: balance;
+    }
+    .tt-school {
+      position: relative; font-size: 13px; font-weight: 500;
+      line-height: 1.4; color: rgba(39, 15, 54, 0.75);
+      z-index: 1; margin-top: auto;
+    }
+    .tt-arrow {
+      position: absolute; bottom: 18px; right: 18px;
+      width: 32px; height: 32px;
+      background: rgba(39, 15, 54, 0.9); color: #FFDE49;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 800; z-index: 2;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .topper-tile:hover .tt-arrow { transform: translateX(3px); background: var(--mai-purple); }
+
+    /* Rankings controls */
+    .rankings-controls {
+      position: sticky; top: 56px; z-index: 20;
+      background: rgba(250, 241, 240, 0.92);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      padding: 14px 0 16px; margin-bottom: 24px;
+    }
+    .grade-tabs {
+      display: flex; gap: 6px;
+      overflow-x: auto; margin-bottom: 12px;
+      padding-bottom: 4px; scrollbar-width: none;
+    }
+    .grade-tabs::-webkit-scrollbar { display: none; }
+    .grade-tab {
+      flex-shrink: 0; padding: 10px 16px;
+      border: 1px solid var(--mai-border);
+      background: var(--mai-white);
+      border-radius: var(--mai-radius-full);
+      font-size: 13px; font-weight: 700;
+      color: var(--mai-fg-2); cursor: pointer;
+      transition: all 0.15s ease; white-space: nowrap;
+    }
+    .grade-tab:hover { color: var(--mai-fg-1); border-color: rgba(39,15,54,0.18); }
+    .grade-tab.active {
+      background: var(--mai-purple); color: var(--mai-yellow);
+      border-color: var(--mai-purple);
+    }
+    .search-wrap { position: relative; }
+    .search-wrap input {
+      width: 100%;
+      padding: 14px 16px 14px 44px;
+      border: 1.5px solid var(--mai-border);
+      border-radius: var(--mai-radius-sm);
+      background: var(--mai-white);
+      font-family: var(--mai-font);
+      font-size: 15px; color: var(--mai-fg-1);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .search-wrap input::placeholder { color: var(--mai-fg-3); }
+    .search-wrap input:focus {
+      border-color: var(--mai-purple);
+      box-shadow: 0 0 0 3px rgba(39, 15, 54, 0.08);
+    }
+    .search-wrap .icon {
+      position: absolute; left: 14px;
+      top: 50%; transform: translateY(-50%);
+      width: 20px; height: 20px;
+      color: var(--mai-fg-3); pointer-events: none;
+    }
+    .search-wrap .clear {
+      position: absolute; right: 8px;
+      top: 50%; transform: translateY(-50%);
+      background: var(--mai-gray-100); border: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      cursor: pointer; font-size: 14px;
+      color: var(--mai-fg-2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .search-wrap .clear:hover { background: var(--mai-gray-200); }
+
+    /* Search results */
+    .search-results {
+      background: var(--mai-white);
+      border: 1px solid var(--mai-border-soft);
+      border-radius: var(--mai-radius-lg);
+      padding: 8px;
+      box-shadow: var(--mai-shadow-card);
+      margin-bottom: 24px;
+    }
+    .search-results-head {
+      padding: 10px 12px 6px;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--mai-fg-3);
+    }
+    .result-row {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 12px; align-items: center;
+      padding: 10px 12px;
+      border-radius: var(--mai-radius-sm);
+      cursor: pointer;
+      transition: background 0.12s ease;
+    }
+    .result-row:hover { background: var(--mai-gray-50); }
+    .result-grade {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--mai-fg-3);
+    }
+    .result-name { font-size: 15px; font-weight: 700; }
+    .result-school { font-size: 12px; color: var(--mai-fg-2); margin-top: 2px; }
+    .result-rank { font-size: 18px; font-weight: 800; color: var(--mai-coral); letter-spacing: -0.02em; }
+
+    /* Topper card per grade */
+    .topper-card {
+      background: var(--mai-grad-yellow-2);
+      border-radius: var(--mai-radius-2xl);
+      padding: 32px;
+      box-shadow: var(--mai-shadow-yellow-2);
+      margin-bottom: 20px;
+      position: relative; overflow: hidden;
+    }
+    .topper-card::before {
+      content: '#1'; position: absolute;
+      right: 18px; top: 8px;
+      font-size: 120px; font-weight: 900;
+      letter-spacing: -0.06em;
+      color: rgba(39, 15, 54, 0.08);
+      line-height: 1; pointer-events: none;
+    }
+    .topper-card .label {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(39, 15, 54, 0.65); margin-bottom: 10px;
+    }
+    .topper-card .name {
+      font-size: clamp(28px, 4.5vw, 38px);
+      font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.1; margin: 0 0 8px;
+      max-width: 18ch; text-wrap: balance;
+    }
+    .topper-card .school {
+      font-size: 16px; font-weight: 500;
+      color: rgba(39, 15, 54, 0.75); max-width: 50ch;
+    }
+    @media (max-width: 600px) {
+      .topper-card { padding: 24px 20px; }
+      .topper-card::before { font-size: 80px; right: 12px; top: 4px; }
+    }
+
+    /* Top 3 cards */
+    .top3-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; margin-bottom: 32px;
+    }
+    @media (max-width: 600px) { .top3-grid { grid-template-columns: 1fr; } }
+    .top3-card {
+      background: var(--mai-white);
+      border: 1px solid var(--mai-border-soft);
+      border-radius: var(--mai-radius-lg);
+      padding: 20px 18px;
+      box-shadow: var(--mai-shadow-card);
+      display: flex; flex-direction: column; gap: 6px;
+      min-height: 130px;
+    }
+    .top3-card .rank {
+      font-size: 28px; font-weight: 900;
+      letter-spacing: -0.04em; color: var(--mai-coral);
+      line-height: 1; margin-bottom: 4px;
+    }
+    .top3-card .top3-name {
+      font-size: 17px; font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.2;
+    }
+    .top3-card .top3-school {
+      font-size: 12px; color: var(--mai-fg-2);
+      line-height: 1.4; margin-top: auto;
+    }
+
+    /* Rank tables */
+    .table-block { margin-bottom: 28px; }
+    .table-block h3 {
+      font-size: 18px; font-weight: 800;
+      letter-spacing: -0.02em; margin: 0 0 10px;
+    }
+    .table-block h3 .count {
+      font-weight: 500; color: var(--mai-fg-3);
+      font-size: 14px; margin-left: 6px;
+    }
+    .rank-table {
+      background: var(--mai-white);
+      border: 1px solid var(--mai-border-soft);
+      border-radius: var(--mai-radius-lg);
+      box-shadow: var(--mai-shadow-card);
+      overflow: hidden;
+    }
+    .rank-row {
+      display: grid;
+      grid-template-columns: 56px 1fr 1.4fr;
+      gap: 16px; padding: 14px 18px;
+      align-items: center;
+      border-bottom: 1px solid var(--mai-border-soft);
+      transition: background 0.1s ease;
+    }
+    .rank-row:last-child { border-bottom: 0; }
+    .rank-row:hover { background: rgba(255, 222, 73, 0.06); }
+    .rank-row.highlight { animation: highlightFade 2.8s ease forwards; }
+    @keyframes highlightFade {
+      0%   { background: rgba(255, 222, 73, 0.55); }
+      100% { background: rgba(255, 222, 73, 0); }
+    }
+    .rank-num { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; color: var(--mai-coral); }
+    .rank-name { font-size: 15px; font-weight: 700; line-height: 1.3; }
+    .rank-school { font-size: 13px; color: var(--mai-fg-2); line-height: 1.35; }
+    @media (max-width: 600px) {
+      .rank-row { grid-template-columns: 40px 1fr; gap: 8px 12px; padding: 12px 14px; }
+      .rank-school { grid-column: 2 / 3; font-size: 12px; margin-top: 2px; }
+      .rank-num { font-size: 16px; }
+      .rank-name { font-size: 14px; }
+    }
+
+    .show-more {
+      display: block; width: 100%;
+      margin: 14px 0 0; padding: 14px 16px;
+      border: 1px dashed rgba(39, 15, 54, 0.2);
+      background: transparent;
+      border-radius: var(--mai-radius-sm);
+      font-size: 14px; font-weight: 700;
+      color: var(--mai-fg-1); cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .show-more:hover {
+      background: var(--mai-white);
+      border-color: rgba(39, 15, 54, 0.3);
+    }
+
+    .no-results {
+      background: var(--mai-white);
+      border: 1px solid var(--mai-border-soft);
+      border-radius: var(--mai-radius-lg);
+      padding: 36px 24px; text-align: center;
+      box-shadow: var(--mai-shadow-card);
+    }
+    .no-results .big { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+    .no-results .small { font-size: 14px; color: var(--mai-fg-2); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--mai-white);
+      border: 1px solid var(--mai-border-soft);
+      border-radius: var(--mai-radius-lg);
+      box-shadow: var(--mai-shadow-card);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; padding: 18px 22px;
+      background: none; border: 0;
+      text-align: left; cursor: pointer;
+      font-size: 16px; font-weight: 700;
+      letter-spacing: -0.01em; color: var(--mai-fg-1);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+    }
+    .faq-q .chev {
+      width: 18px; height: 18px; flex-shrink: 0;
+      transition: transform 0.2s ease;
+      color: var(--mai-fg-3);
+    }
+    .faq-item.open .chev { transform: rotate(180deg); }
+    .faq-a {
+      padding: 0 22px 22px;
+      font-size: 15px; line-height: 1.6;
+      color: var(--mai-fg-2); display: none;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a strong { color: var(--mai-fg-1); }
+
+    /* Acks */
+    .acks p {
+      font-size: 16px; line-height: 1.65;
+      margin: 0 0 14px; max-width: 64ch;
+    }
+
+    /* 10x band */
+    .promo-band {
+      background: var(--mai-grad-yellow-2);
+      border-radius: var(--mai-radius-2xl);
+      padding: 56px 44px;
+      box-shadow: var(--mai-shadow-yellow-2);
+      position: relative; overflow: hidden;
+    }
+    .promo-band::after {
+      content: '10×';
+      position: absolute; right: -10px; bottom: -40px;
+      font-size: 280px; font-weight: 900;
+      letter-spacing: -0.08em;
+      color: rgba(39, 15, 54, 0.06);
+      line-height: 1; pointer-events: none;
+    }
+    .promo-band .eyebrow { color: var(--mai-purple); margin-bottom: 12px; }
+    .promo-band h2 {
+      font-size: clamp(28px, 4.2vw, 40px);
+      font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.1; margin: 0 0 16px; max-width: 18ch;
+    }
+    .promo-band p {
+      font-size: 17px; line-height: 1.55;
+      color: rgba(39, 15, 54, 0.78);
+      margin: 0 0 14px; max-width: 55ch;
+      position: relative; z-index: 1;
+    }
+    .promo-band p strong { color: var(--mai-purple); }
+    .promo-band .stats { display: flex; flex-wrap: wrap; gap: 14px; margin: 24px 0 28px; }
+    .promo-band .stat {
+      background: rgba(255, 255, 255, 0.55);
+      border-radius: var(--mai-radius-sm);
+      padding: 12px 18px;
+      backdrop-filter: blur(8px);
+    }
+    .promo-band .stat .num {
+      font-size: 22px; font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--mai-purple); display: block;
+    }
+    .promo-band .stat .lbl {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(39, 15, 54, 0.6);
+    }
+    .promo-band .built-by {
+      font-size: 12px;
+      color: rgba(39, 15, 54, 0.55);
+      margin-top: 18px; font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      .promo-band { padding: 36px 24px; }
+      .promo-band::after { font-size: 180px; right: -20px; bottom: -30px; }
+    }
+
+    /* Footer */
+    footer {
+      padding: 56px 0 40px;
+      border-top: 1px solid var(--mai-border-soft);
+      margin-top: 32px;
+    }
+    .footer-inner { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 20px; } }
+    .footer-block h4 {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--mai-fg-3); margin: 0 0 10px;
+    }
+    .footer-block p, .footer-block a {
+      font-size: 14px; color: var(--mai-fg-2);
+      margin: 0 0 6px; text-decoration: none;
+      display: block; line-height: 1.5;
+    }
+    .footer-block a:hover { color: var(--mai-fg-1); }
+    .footer-bottom {
+      margin-top: 36px; padding-top: 20px;
+      border-top: 1px solid var(--mai-border-soft);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom .copy { font-size: 12px; color: var(--mai-fg-3); }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <div class="brand-mark"><div class="core"></div><div class="companion"></div></div>
+        <span class="brand-text">Math<span class="ai">AI</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#foreword">Foreword</a>
+        <a href="#rankings">Rankings</a>
+        <a href="#faq">FAQ</a>
+        <a href="#program">10x Speed</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <p class="eyebrow">2025–26 Finals</p>
+        <h1>International Math <span class="accent">Challenge</span> — Official Results</h1>
+        <p class="date">May 2026</p>
+        <p class="sub">Students from 1,000+ schools across the globe took part. Here are the finalists.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="cta-find-rank">Find your rank →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foreword -->
+    <section id="foreword">
+      <div class="foreword">
+        <p class="eyebrow">A note from Team MathAI</p>
+        <h2>Thank you for being part of this.</h2>
+        <p>The International Math Challenge 2025-26 reached students from 1,000+ schools across the globe.</p>
+        <p>These results celebrate the students who took part — and the curiosity that brought them here.</p>
+        <p>Math is a long journey. A challenge like this is one good step on it.</p>
+        <p>We thank the schools and families who made it possible.</p>
+        <p>Congratulations to every finalist.</p>
+        <p class="signature">— <strong>Team MathAI</strong>, International Math Challenge Organising Team</p>
+      </div>
+    </section>
+
+    <!-- Toppers overview -->
+    <section>
+      <div class="section-head">
+        <p class="eyebrow">Grade Toppers</p>
+        <h2>Eight #1s, across eight grades.</h2>
+        <p>Tap any topper to jump to that grade's rankings.</p>
+      </div>
+      <div class="toppers-grid" id="toppers-grid"></div>
+    </section>
+
+    <!-- Rankings -->
+    <section id="rankings">
+      <div class="section-head">
+        <p class="eyebrow">Rankings</p>
+        <h2>The IMC 2025-26 finalists.</h2>
+        <p>Pick a grade or search by name — every grade lists the top 50.</p>
+      </div>
+
+      <div class="rankings-controls">
+        <div class="grade-tabs" id="grade-tabs" role="tablist"></div>
+        <div class="search-wrap">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input id="search-input" type="text" placeholder="Search any name or school across all grades…" autocomplete="off">
+          <button class="clear" id="search-clear" aria-label="Clear search" style="display:none;">×</button>
+        </div>
+      </div>
+
+      <div id="rankings-body"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="section-head">
+        <h2>Frequently asked questions.</h2>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </section>
+
+    <!-- Acknowledgements -->
+    <section class="acks">
+      <div class="section-head">
+        <p class="eyebrow">Thank you</p>
+        <h2>This runs because people show up for it.</h2>
+      </div>
+      <p>The International Math Challenge runs because schools, teachers and parents show up for it.</p>
+      <p>To the schools that registered students and hosted the challenge — thank you for trusting us.</p>
+      <p>To the teachers who encouraged children to try a hard thing — your nudge matters more than you know.</p>
+      <p>To the parents who made space at home for one more thing — we see you.</p>
+      <p>And to every student who took part — well done. We hope this is one of many.</p>
+    </section>
+
+    <!-- 10x Speed Promo -->
+    <section id="program">
+      <div class="promo-band">
+        <p class="eyebrow">10x Speed Program</p>
+        <h2>This summer, your child can get ahead in math.</h2>
+        <p>Summer break is the perfect window. While school is paused, your child can build a skill that lasts all year.</p>
+        <p>The <strong>10x Speed Program</strong> helps children ages 8–14 become <strong>10x faster at mental math</strong> — from 45 seconds per calculation down to 2 seconds — in 6 to 8 weeks.</p>
+        <p>Sessions are short — 20 to 25 minutes, four times a week. They are run by AI coaches that adapt to each child.</p>
+        <p><strong>Start with a 7-day trial for just ₹1.</strong> Then ₹799/month. No long contracts.</p>
+        <div class="stats">
+          <div class="stat"><span class="num">45s → 2s</span><span class="lbl">Mental math</span></div>
+          <div class="stat"><span class="num">6–8 wks</span><span class="lbl">To 10x faster</span></div>
+          <div class="stat"><span class="num">4×/wk</span><span class="lbl">20–25 min sessions</span></div>
+          <div class="stat"><span class="num">₹1</span><span class="lbl">7-day trial</span></div>
+        </div>
+        <a class="btn btn-primary" href="https://learn.mathai.ai/" target="_blank" rel="noopener noreferrer">Start the 10x Speed Program →</a>
+        <p class="built-by">Built by IIT Bombay</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-block">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+            <div class="brand-mark"><div class="core"></div><div class="companion"></div></div>
+            <span class="brand-text">Math<span class="ai">AI</span></span>
+          </div>
+          <p>International Math Challenge<br>2025–26 Organising Team</p>
+        </div>
+        <div class="footer-block">
+          <h4>Contact</h4>
+          <a href="https://wa.me/918884761744">WhatsApp · +91 88847 61744</a>
+          <a href="mailto:harshvardhanmandad@octoapp.ai">harshvardhanmandad@octoapp.ai</a>
+        </div>
+        <div class="footer-block">
+          <h4>Quick links</h4>
+          <a href="#foreword">Foreword</a>
+          <a href="#rankings">Rankings</a>
+          <a href="#faq">FAQ</a>
+          <a href="#program">10x Speed Program</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copy">© 2026 Infybytes AI Labs Pvt Ltd · MathAI</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

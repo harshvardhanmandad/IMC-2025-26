@@ -312,7 +312,7 @@ window.IMC_DATA = {
     { rank: 47, recognition: 'Top 50', name: 'Medhavi Gupta', school: 'AMNS INTERNATIONAL SCHOOL' },
     { rank: 48, recognition: 'Top 50', name: 'Aishwarya Avk', school: 'Birla Open Minds International School' },
     { rank: 49, recognition: 'Top 50', name: 'Mohamad Hassan El Zein', school: 'Rafic Hariri High School' },
-    { rank: 50, recognition: 'Top 50', name: 'Yoon Jae Ban', school: 'Singapore School Cebu' },
+    { rank: 50, recognition: 'Top 50', name: 'Yoon Jae Ban', school: 'Singapore School Manila' },
   ],
   9: [
     { rank: 1, recognition: 'Topper', name: 'Sneh Shah', school: 'Thakur Public School' },
